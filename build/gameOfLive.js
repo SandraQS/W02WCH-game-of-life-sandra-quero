@@ -6,7 +6,7 @@
   [0, 0, 0, 0, 0],
 ]; */
 const tableroJuego = [];
-const filaTablero = [0, 0, 0, 0, 0, 0, 0];
+const filaTablero = [0, 0, 0, 0, 0];
 
 function crearTablero(arrayTablero, filas) {
   for (let i = 0; i < 7; i++) {
@@ -15,20 +15,8 @@ function crearTablero(arrayTablero, filas) {
   return tableroJuego;
 }
 
-console.table(crearTablero(tableroJuego, filaTablero));
-
-
-function revisarLateral(){
-  
-}
-
-for (let i = 0; i < tableroJuego.length; i++) {
-  for (let j = 0; j < tableroJuego.length; j++) {
-    if ((tableroJuego[i][j] === 1) && (tableroJuego[i][j + 1] === 1) && (tableroJuego[i][j - 1] === 1)  {
-      console.log('hola')
-    }
-  }
-}
+console.log(crearTablero(tableroJuego, filaTablero));
+/*
 
 /* 
 let col;
@@ -80,3 +68,7 @@ function vecinosVerticales(arrayTablero, posicionCol, posicionRow) {
 }
 vecinosVerticales(tablero, col, row);
  */
+
+module.exports = {
+  crearTablero,
+};
