@@ -1,0 +1,27 @@
+{
+  "name": "challenge-weekend2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --collect--coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandraQS/W02WCH-sandra-quero.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandraQS/W02WCH-sandra-quero/issues"
+  },
+  "homepage": "https://github.com/SandraQS/W02WCH-sandra-quero#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "jest": "^27.2.5"
+  }
+}
