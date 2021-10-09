@@ -1,22 +1,27 @@
 const { crearTablero } = require("./gameOfLive");
 
-describe("En la funcion crearTablero()", () => {
-  test("Cuando le pasamos [0, 0, 0, 0, 0], tiene que devolver [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]", () => {
-    const tablero = [];
-    const fila = [0, 0, 0, 0, 0];
-    const expected = [
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
-    ];
+describe("Dada la funcion crearTablero()", () => {
+  describe("Cuando le pasamos por parametro 10 y 10", () => {
+    test("deberia devolver un array de 10 filas y 10 columnas", () => {
+      const columnas = 10;
+      const filas = 10;
+      const expected = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      ];
 
-    // act
-    const result = crearTablero(tablero, fila);
-    // assert
-    expect(result).toEqual(expected);
+      // act
+      const result = crearTablero(columnas, filas);
+      // assert
+      expect(result).toEqual(expected);
+    });
   });
 });
