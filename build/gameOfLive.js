@@ -72,13 +72,19 @@ const nuevoTablero = (tablero) => {
   return tableroNuero;
 };
 
-let tableroFinal = crearTablero(columnas, filas);
+const tableroFinal = crearTablero(columnas, filas);
 
 tableroFinal[1][2] = 1;
 tableroFinal[2][2] = 1;
 tableroFinal[3][2] = 1;
 
-setInterval(() => {
-  tableroFinal = nuevoTablero(tableroFinal);
-  console.table(tableroFinal);
-}, 1000);
+// setInterval(() => {
+//   tableroFinal = nuevoTablero(tableroFinal);
+//   console.table(tableroFinal);
+// }, 1000);
+
+module.exports = {
+  crearTablero,
+  contarVecinos,
+  nuevoTablero,
+};
