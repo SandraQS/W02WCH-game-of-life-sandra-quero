@@ -5,9 +5,10 @@
   [0, 0, 1, 0, 0],
   [0, 0, 0, 0, 0],
 ]; */
-debugger;
+
 const tableroJuego = [];
 const filaTablero = [1, 0, 1, 0, 0];
+
 // let contador;
 
 function crearTablero(arrayTablero, filas) {
@@ -20,7 +21,7 @@ function crearTablero(arrayTablero, filas) {
 console.table(crearTablero(tableroJuego, filaTablero));
 
 function revisarLateral(arrayTablero) {
-  debugger;
+  let nuevoTablero = [];
   arrayTablero.forEach((fila) => {
     fila.forEach((celula) => {
       let contador = 0;
@@ -40,19 +41,23 @@ function revisarLateral(arrayTablero) {
         }
       }
 
-      const nuevoTablero = arrayTablero.map((elemento) => {
-        if (contador <= 1) {
+      nuevoTablero = arrayTablero.map((elemento) => {
+        if (celula === 1 && contador < 2) {
+          elemento[posicion] = 1;
+        } else if (celula === 1 && (contador === 2 || contador === 3)) {
+          elemento[posicion] = 1;
+        } else if (celula === 1 && contador > 3) {
+          elemento[posicion] = 0;
+        } else if (celula === 0 && contador === 3) {
           elemento[posicion] = 1;
         }
         return elemento;
       });
-      console.table(tableroJuego);
-      console.table(nuevoTablero);
-      // console.log(`indice:${arrayTablero[row][col]} contador: ${contador}`);
     });
   });
+  return console.table(nuevoTablero);
 }
-
+console.table(tableroJuego);
 revisarLateral(tableroJuego);
 /*
 
