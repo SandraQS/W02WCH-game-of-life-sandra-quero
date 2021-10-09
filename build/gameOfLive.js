@@ -5,6 +5,7 @@
   [0, 0, 1, 0, 0],
   [0, 0, 0, 0, 0],
 ]; */
+debugger;
 const tableroJuego = [];
 const filaTablero = [1, 0, 1, 0, 0];
 // let contador;
@@ -26,23 +27,28 @@ function revisarLateral(arrayTablero) {
       const row = arrayTablero.indexOf(fila);
       const col = fila.indexOf(celula);
       const posicion = arrayTablero[row][col];
-      console.log(posicion);
+
       if (col !== 0) {
-        debugger;
         if (arrayTablero[row][col - 1] === 1) {
           contador += 1;
         }
       }
+
       if (col !== fila.lenght) {
         if (arrayTablero[row][col + 1] === 1) {
           contador += 1;
         }
       }
 
-      console.log(`indice:${arrayTablero[row][col]} contador: ${contador}`);
-      if (contador <= 1) {
-        console.log("hola");
-      }
+      const nuevoTablero = arrayTablero.map((elemento) => {
+        if (contador <= 1) {
+          elemento[posicion] = 1;
+        }
+        return elemento;
+      });
+      console.table(tableroJuego);
+      console.table(nuevoTablero);
+      // console.log(`indice:${arrayTablero[row][col]} contador: ${contador}`);
     });
   });
 }
