@@ -57,6 +57,7 @@ function revisarLateral(arrayTablero) {
   });
   return console.table(nuevoTablero);
 }
+
 console.table(tableroJuego);
 revisarLateral(tableroJuego);
 /*
