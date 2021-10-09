@@ -6,7 +6,8 @@
   [0, 0, 0, 0, 0],
 ]; */
 const tableroJuego = [];
-const filaTablero = [0, 0, 0, 0, 0];
+const filaTablero = [1, 2, 3, 4, 5];
+let contador;
 
 function crearTablero(arrayTablero, filas) {
   for (let i = 0; i < 7; i++) {
@@ -15,7 +16,31 @@ function crearTablero(arrayTablero, filas) {
   return tableroJuego;
 }
 
-console.log(crearTablero(tableroJuego, filaTablero));
+console.table(crearTablero(tableroJuego, filaTablero));
+
+function revisarLateral(arrayTablero) {
+  debugger;
+  arrayTablero.forEach((fila) => {
+    fila.forEach((celula) => {
+      const row = arrayTablero.indexOf(fila);
+      const col = fila.indexOf(celula);
+      const posicion = arrayTablero[row][col];
+      console.log(posicion);
+      /* if (fila[celula - 1] === 1) {
+        contador += 1;
+      }
+      if (fila[celula + 1] === 1) {
+        contador += 1;
+      }
+
+      if (contador <= 1) {
+        console.log("hola");
+      } */
+    });
+  });
+}
+
+revisarLateral(tableroJuego);
 /*
 
 /* 
