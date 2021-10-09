@@ -1,118 +1,84 @@
-/* const tablero = [
-  [0, 0, 0, 0, 0],
-  [0, 0, 1, 0, 0],
-  [0, 0, 1, 0, 0],
-  [0, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0],
-]; */
+const columnas = 10;
+const filas = 10;
 
-const tableroJuego = [];
-const filaTablero = [1, 0, 1, 0, 0];
-
-// let contador;
-
-function crearTablero(arrayTablero, filas) {
-  for (let i = 0; i < 7; i++) {
-    arrayTablero.push(filas);
+const crearTablero = (col, row) => {
+  const firstCol = new Array(col);
+  for (let i = 0; i < firstCol.length; i++) {
+    firstCol[i] = new Array(row);
+    for (let j = 0; j < firstCol[i].length; j++) {
+      firstCol[i][j] = 0;
+    }
   }
-  return tableroJuego;
-}
-
-console.table(crearTablero(tableroJuego, filaTablero));
-
-function revisarLateral(arrayTablero) {
-  let nuevoTablero = [];
-  arrayTablero.forEach((fila) => {
-    fila.forEach((celula) => {
-      let contador = 0;
-      const row = arrayTablero.indexOf(fila);
-      const col = fila.indexOf(celula);
-      const posicion = arrayTablero[row][col];
-
-      if (col !== 0) {
-        if (arrayTablero[row][col - 1] === 1) {
-          contador += 1;
-        }
-      }
-
-      if (col !== fila.lenght) {
-        if (arrayTablero[row][col + 1] === 1) {
-          contador += 1;
-        }
-      }
-
-      nuevoTablero = arrayTablero.map((elemento) => {
-        if (celula === 1 && contador < 2) {
-          elemento[posicion] = 1;
-        } else if (celula === 1 && (contador === 2 || contador === 3)) {
-          elemento[posicion] = 1;
-        } else if (celula === 1 && contador > 3) {
-          elemento[posicion] = 0;
-        } else if (celula === 0 && contador === 3) {
-          elemento[posicion] = 1;
-        }
-        return elemento;
-      });
-    });
-  });
-  return console.table(nuevoTablero);
-}
-
-console.table(tableroJuego);
-revisarLateral(tableroJuego);
-/*
-
-/* 
-let col;
-let row;
-console.table(tablero);
-let contador = 0;
-
-function vecinosLaterales(arrayTablero, posicionCol, posicionRow) {
-  posicionCol = 2;
-  const posicionInicialCol = posicionCol;
-  const posicion = arrayTablero[posicionRow][posicionCol];
-  if (posicion === 1) {
-    col -= 1;
-    if (posicion === 1) {
-      contador += 1;
-      col = posicionInicialCol;
-    } else {
-      col = posicionInicialCol;
-      col = +1;
-    }
-    if (posicion === 1) {
-      contador += 1;
-    }
-
-    console.log(contador);
-  }
-}
-vecinosLaterales(tablero, col, row);
-
-function vecinosVerticales(arrayTablero, posicionCol, posicionRow) {
-  posicionRow = 1;
-  const posicionInicialRow = posicionRow;
-  const posicion = arrayTablero[posicionRow][posicionCol];
-  if (posicion === 1) {
-    row -= 1;
-    if (posicion === 1) {
-      contador += 1;
-      row = posicionInicialRow;
-    } else {
-      row = posicionInicialRow;
-      row = +1;
-    }
-    if (posicion === 1) {
-      contador += 1;
-    }
-
-    console.log(contador);
-  }
-}
-vecinosVerticales(tablero, col, row);
- */
-
-module.exports = {
-  crearTablero,
+  return firstCol;
 };
+
+const contarVecinos = (tablero, col, row) => {
+  let contador = 0;
+  if (tablero[row - 1] !== undefined) {
+    if (tablero[row - 1][col - 1] === 1) {
+      contador += 1;
+    }
+    if (tablero[row - 1][col] === 1) {
+      contador += 1;
+    }
+    if (tablero[row - 1][col + 1] === 1) {
+      contador += 1;
+    }
+  }
+
+  if (tablero[row][col - 1] === 1) {
+    contador += 1;
+  }
+  if (tablero[row][col + 1] === 1) {
+    contador += 1;
+  }
+
+  if (tablero[row + 1] !== undefined) {
+    if (tablero[row + 1][col - 1] === 1) {
+      contador += 1;
+    }
+    if (tablero[row + 1][col] === 1) {
+      contador += 1;
+    }
+    if (tablero[row + 1][col + 1] === 1) {
+      contador += 1;
+    }
+  }
+  return contador;
+};
+
+const nuevoTablero = (tablero) => {
+  const primerTablero = tablero;
+  const tableroNuero = crearTablero(columnas, filas);
+
+  for (let i = 0; i < primerTablero.length; i++) {
+    for (let j = 0; j < primerTablero[i].length; j++) {
+      const vecinos = contarVecinos(primerTablero, j, i);
+
+      if (primerTablero[i][j] === 1 && vecinos < 2) {
+        tableroNuero[i][j] = 0;
+      }
+      if (primerTablero[i][j] === 1 && (vecinos === 2 || vecinos === 3)) {
+        tableroNuero[i][j] = 1;
+      }
+      if (primerTablero[i][j] === 1 && vecinos > 3) {
+        tableroNuero[i][j] = 0;
+      }
+      if (primerTablero[i][j] === 0 && vecinos === 3) {
+        tableroNuero[i][j] = 1;
+      }
+    }
+  }
+  return tableroNuero;
+};
+
+let tableroFinal = crearTablero(columnas, filas);
+
+tableroFinal[1][2] = 1;
+tableroFinal[2][2] = 1;
+tableroFinal[3][2] = 1;
+
+setInterval(() => {
+  tableroFinal = nuevoTablero(tableroFinal);
+  console.table(tableroFinal);
+}, 1000);
