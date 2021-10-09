@@ -1,4 +1,4 @@
-const { crearTablero, contarVecinos } = require("./gameOfLive");
+const { crearTablero, contarVecinos, nuevoTablero } = require("./gameOfLive");
 
 describe("Dada la funcion crearTablero()", () => {
   describe("Cuando le pasamos por parametro 10 y 10", () => {
@@ -49,6 +49,43 @@ describe("Dada la funcion contarVecinos()", () => {
       const result = contarVecinos(tablero, col, fila);
       // assert
       expect(result).toBe(expected);
+    });
+  });
+});
+
+describe("Dada la funcion nuevoTablero()", () => {
+  describe("Cuando le pasamos por parametro un array, con la cantidad de vecinos", () => {
+    test("deberia devolver un nuevo array con los cambios en las celulas", () => {
+      const tablero = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      ];
+
+      const expected = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      ];
+
+      // act
+      const result = nuevoTablero(tablero);
+      // assert
+      expect(result).toEqual(expected);
     });
   });
 });
