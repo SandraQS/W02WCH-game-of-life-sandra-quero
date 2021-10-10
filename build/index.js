@@ -3,23 +3,54 @@ const tableroMedio = document.getElementById("medio");
 const tablerGrande = document.getElementById("grande");
 const botonEmpezar = document.getElementById("empezar");
 const botonResetear = document.getElementById("Resetear");
+
+function crearFilasDivs() {
+  const div = document.createElement("div");
+  div.className = "contenedor-principal__filas";
+
+  div.style.width = "800px";
+  div.style.height = "100px";
+  div.style.background = "black";
+
+  document.getElementById("contenedor-tablero").appendChild(div);
+}
+
+function crearCelulas() {
+  const celula = document.createElement("div");
+  celula.className = "contenedor-principal__celula";
+
+  celula.style.width = "100px";
+  celula.style.height = "100px";
+  celula.style.background = "red";
+  celula.style.border = "thick solid black";
+
+  const celulaIndividual = document.getElementsByClassName(
+    "contenedor-principal__filas"
+  );
+  for (let i = 0; i < celulaIndividual.length; i++) {
+    celulaIndividual[i].appendChild(celula);
+  }
+}
+
 let columnas;
 let filas;
 
 const crearTablero = (col, row) => {
-  const firstCol = new Array(col);
-  for (let i = 0; i < firstCol.length; i++) {
-    firstCol[i] = new Array(row);
-    for (let j = 0; j < firstCol[i].length; j++) {
-      firstCol[i][j] = 0;
+  const primeraTabla = new Array(col);
+  for (let i = 0; i < primeraTabla.length; i++) {
+    primeraTabla[i] = new Array(row);
+    for (let j = 0; j < primeraTabla[i].length; j++) {
+      primeraTabla[i][j] = 0;
+      crearCelulas();
     }
+    crearFilasDivs();
   }
-  return console.table(firstCol);
+  return console.table(primeraTabla);
 };
+
 tableroPequeño.addEventListener("click", () => {
   columnas = 10;
   filas = 10;
-  document.body.style.backgroundColor = "#0000FF";
   crearTablero(columnas, filas);
 });
 
