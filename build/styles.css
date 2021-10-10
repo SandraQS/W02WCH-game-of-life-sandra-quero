@@ -1,5 +1,44 @@
+.contenedor-principal__tablero, .contenedor-principal, .cabecera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: black;
+}
+
+.cabecera {
+  width: 100vw;
+  height: auto;
+}
+.contenedor-principal {
+  width: 100vw;
+  height: 90vh;
+  flex-direction: column;
+}
+.contenedor-principal__tablero {
+  flex-direction: column;
+  background: #bb326d;
+  background: linear-gradient(112deg, #bb326d 0%, #46ded1 16%, #f1f16d 34%, #018584 49%, #b58ced 63%, #e752ff 75%, #f4ff8c 90%, #00d4ff 100%);
+}
 .contenedor-principal__filas {
   display: flex;
+  width: 100%;
+  height: auto;
+}
+.contenedor-principal__celula {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border: 0.25px solid #3b3b3b;
 }
 
 /*# sourceMappingURL=styles.css.map */

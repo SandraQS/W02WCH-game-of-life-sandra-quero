@@ -1,6 +1,6 @@
 const tableroPequeño = document.getElementById("pequeño");
 const tableroMedio = document.getElementById("medio");
-const tablerGrande = document.getElementById("grande");
+const tableroGrande = document.getElementById("grande");
 const botonEmpezar = document.getElementById("empezar");
 const botonResetear = document.getElementById("Resetear");
 
@@ -8,21 +8,12 @@ function crearFilasDivs() {
   const div = document.createElement("div");
   div.className = "contenedor-principal__filas";
 
-  div.style.width = "800px";
-  div.style.height = "100px";
-  div.style.background = "black";
-
   document.getElementById("contenedor-tablero").appendChild(div);
 }
 
 function crearCelulas() {
   const celula = document.createElement("div");
   celula.className = "contenedor-principal__celula";
-
-  celula.style.width = "100px";
-  celula.style.height = "100px";
-  celula.style.background = "red";
-  celula.style.border = "thick solid black";
 
   const celulaIndividual = document.getElementsByClassName(
     "contenedor-principal__filas"
@@ -48,23 +39,40 @@ const crearTablero = (col, row) => {
   return console.table(primeraTabla);
 };
 
+function omitirBotonesTablero() {
+  tableroGrande.style.display = "none";
+  tableroPequeño.style.display = "none";
+  tableroMedio.style.display = "none";
+}
+
 tableroPequeño.addEventListener("click", () => {
   columnas = 10;
   filas = 10;
+  document.getElementById("contenedor-tablero").style.display = "flex";
+  document.getElementById("contenedor-tablero").style.width = "200px";
+  document.getElementById("contenedor-tablero").style.height = "200px";
+  omitirBotonesTablero();
+
   crearTablero(columnas, filas);
 });
 
 tableroMedio.addEventListener("click", () => {
   columnas = 20;
   filas = 20;
-  document.body.style.backgroundColor = "#000";
+  document.getElementById("contenedor-tablero").style.display = "flex";
+  document.getElementById("contenedor-tablero").style.width = "400px";
+  document.getElementById("contenedor-tablero").style.height = "400px";
+  omitirBotonesTablero();
   crearTablero(columnas, filas);
 });
 
-tablerGrande.addEventListener("click", () => {
+tableroGrande.addEventListener("click", () => {
   columnas = 30;
   filas = 30;
-  document.body.style.backgroundColor = "#00F";
+  document.getElementById("contenedor-tablero").style.display = "flex";
+  document.getElementById("contenedor-tablero").style.width = "600px";
+  document.getElementById("contenedor-tablero").style.height = "600px";
+  omitirBotonesTablero();
   crearTablero(columnas, filas);
 });
 
