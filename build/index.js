@@ -1,5 +1,10 @@
-const columnas = 10;
-const filas = 10;
+const tableroPequeño = document.getElementById("pequeño");
+const tableroMedio = document.getElementById("medio");
+const tablerGrande = document.getElementById("grande");
+const botonEmpezar = document.getElementById("empezar");
+const botonResetear = document.getElementById("Resetear");
+let columnas;
+let filas;
 
 const crearTablero = (col, row) => {
   const firstCol = new Array(col);
@@ -9,8 +14,28 @@ const crearTablero = (col, row) => {
       firstCol[i][j] = 0;
     }
   }
-  return firstCol;
+  return console.table(firstCol);
 };
+tableroPequeño.addEventListener("click", () => {
+  columnas = 10;
+  filas = 10;
+  document.body.style.backgroundColor = "#0000FF";
+  crearTablero(columnas, filas);
+});
+
+tableroMedio.addEventListener("click", () => {
+  columnas = 20;
+  filas = 20;
+  document.body.style.backgroundColor = "#000";
+  crearTablero(columnas, filas);
+});
+
+tablerGrande.addEventListener("click", () => {
+  columnas = 30;
+  filas = 30;
+  document.body.style.backgroundColor = "#00F";
+  crearTablero(columnas, filas);
+});
 
 const contarVecinos = (tablero, col, row) => {
   let contador = 0;

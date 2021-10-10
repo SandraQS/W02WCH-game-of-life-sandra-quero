@@ -1,4 +1,4 @@
-const { crearTablero, contarVecinos, nuevoTablero } = require("./gameOfLive");
+const { crearTablero, contarVecinos, nuevoTablero } = require("./index");
 
 describe("Dada la funcion crearTablero()", () => {
   describe("Cuando le pasamos por parametro 10 y 10", () => {
