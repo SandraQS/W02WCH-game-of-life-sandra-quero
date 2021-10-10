@@ -210,6 +210,9 @@ botonEmpezar.addEventListener("click", () => {
   }, 4000);
 });
 
+botonResetear.addEventListener("click", () => {
+  location.reload();
+}
 // if (tamañoTablero === "pequeño") {
 //   tableroFinal = crearTablero(10, 10);
 // } else if (tamañoTablero === "medio") {
