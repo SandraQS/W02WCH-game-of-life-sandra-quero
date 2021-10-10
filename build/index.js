@@ -32,8 +32,8 @@ let tamañoTablero;
 //   });
 // }
 
-const columnas = 10;
-const filas = 10;
+const columnas = 20;
+const filas = 20;
 
 // const crearTablero = (col, row) => {
 //   const primeraTabla = new Array(col);
