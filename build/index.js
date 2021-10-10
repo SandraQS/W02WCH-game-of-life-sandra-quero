@@ -1,8 +1,9 @@
-const tableroPequeño = document.getElementById("pequeño");
-const tableroMedio = document.getElementById("medio");
-const tableroGrande = document.getElementById("grande");
+// const tableroPequeño = document.getElementById("pequeño");
+// const tableroMedio = document.getElementById("medio");
+// const tableroGrande = document.getElementById("grande");
 const botonEmpezar = document.getElementById("empezar");
 const botonResetear = document.getElementById("Resetear");
+let tamañoTablero;
 
 // function crearFilasDivs() {
 //   const div = document.createElement("div");
@@ -31,8 +32,8 @@ const botonResetear = document.getElementById("Resetear");
 //   });
 // }
 
-let columnas;
-let filas;
+const columnas = 10;
+const filas = 10;
 
 // const crearTablero = (col, row) => {
 //   const primeraTabla = new Array(col);
@@ -68,6 +69,7 @@ const crearTablero = (col, row) => {
           firstCol[i][j] = 0;
           celulas.style.backgroundColor = "black";
         }
+        console.table(firstCol);
       });
       filasDivs.appendChild(celulas);
     }
@@ -76,42 +78,48 @@ const crearTablero = (col, row) => {
   return firstCol;
 };
 
-function omitirBotonesTablero() {
-  tableroGrande.style.display = "none";
-  tableroPequeño.style.display = "none";
-  tableroMedio.style.display = "none";
-}
+// function omitirBotonesTablero() {
+//   tableroGrande.style.display = "none";
+//   tableroPequeño.style.display = "none";
+//   tableroMedio.style.display = "none";
+// }
 
-tableroPequeño.addEventListener("click", () => {
-  columnas = 10;
-  filas = 10;
-  document.getElementById("contenedor-tablero").style.display = "flex";
-  document.getElementById("contenedor-tablero").style.width = "200px";
-  document.getElementById("contenedor-tablero").style.height = "200px";
-  omitirBotonesTablero();
+// tableroPequeño.addEventListener("click", () => {
+//   columnas = 10;
+//   filas = 10;
+//   tamañoTablero = "pequeño";
 
-  crearTablero(columnas, filas);
-});
+//   document.getElementById("contenedor-tablero").style.display = "flex";
+//   document.getElementById("contenedor-tablero").style.width = "200px";
+//   document.getElementById("contenedor-tablero").style.height = "200px";
+//   omitirBotonesTablero();
 
-tableroMedio.addEventListener("click", () => {
-  columnas = 20;
-  filas = 20;
-  document.getElementById("contenedor-tablero").style.display = "flex";
-  document.getElementById("contenedor-tablero").style.width = "400px";
-  document.getElementById("contenedor-tablero").style.height = "400px";
-  omitirBotonesTablero();
-  crearTablero(columnas, filas);
-});
+//   crearTablero(columnas, filas);
+// });
 
-tableroGrande.addEventListener("click", () => {
-  columnas = 30;
-  filas = 30;
-  document.getElementById("contenedor-tablero").style.display = "flex";
-  document.getElementById("contenedor-tablero").style.width = "600px";
-  document.getElementById("contenedor-tablero").style.height = "600px";
-  omitirBotonesTablero();
-  crearTablero(columnas, filas);
-});
+// tableroMedio.addEventListener("click", () => {
+//   columnas = 20;
+//   filas = 20;
+//   tamañoTablero = "medio";
+
+//   document.getElementById("contenedor-tablero").style.display = "flex";
+//   document.getElementById("contenedor-tablero").style.width = "400px";
+//   document.getElementById("contenedor-tablero").style.height = "400px";
+//   omitirBotonesTablero();
+//   crearTablero(columnas, filas);
+// });
+
+// tableroGrande.addEventListener("click", () => {
+//   columnas = 30;
+//   filas = 30;
+//   tamañoTablero = "grande";
+
+//   document.getElementById("contenedor-tablero").style.display = "flex";
+//   document.getElementById("contenedor-tablero").style.width = "600px";
+//   document.getElementById("contenedor-tablero").style.height = "600px";
+//   omitirBotonesTablero();
+//   crearTablero(columnas, filas);
+// });
 
 const contarVecinos = (tablero, col, row) => {
   let contador = 0;
@@ -173,13 +181,22 @@ const nuevoTablero = (tablero) => {
   return tableroNuero;
 };
 
+let tableroFinal = crearTablero(columnas, filas);
+
 botonEmpezar.addEventListener("click", () => {
   setInterval(() => {
-    let tableroFinal = crearTablero(columnas, filas);
     tableroFinal = nuevoTablero(tableroFinal);
     console.table(tableroFinal);
-  }, 1000);
+  }, 4000);
 });
+
+// if (tamañoTablero === "pequeño") {
+//   tableroFinal = crearTablero(10, 10);
+// } else if (tamañoTablero === "medio") {
+//   tableroFinal = crearTablero(20, 20);
+// } else if (tamañoTablero === "grande") {
+//   tableroFinal = crearTablero(30, 30);
+// }
 
 // // tableroFinal[1][2] = 1;
 // // tableroFinal[2][2] = 1;
