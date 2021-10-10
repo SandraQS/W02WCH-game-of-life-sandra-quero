@@ -1,0 +1,52 @@
+@import "extends";
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: black;
+}
+.cabecera {
+  width: 100vw;
+  height: auto;
+  @extend %display-flex-center;
+  &__titular {
+  }
+}
+.contenedor-principal {
+  width: 100vw;
+  height: 90vh;
+  @extend %display-flex-center;
+  flex-direction: column;
+
+  &__tablero {
+    @extend %display-flex-center;
+    flex-direction: column;
+    background: rgb(187, 50, 109);
+    background: linear-gradient(
+      112deg,
+      rgba(187, 50, 109, 1) 0%,
+      rgba(70, 222, 209, 1) 16%,
+      rgba(241, 241, 109, 1) 34%,
+      rgba(1, 133, 132, 1) 49%,
+      rgba(181, 140, 237, 1) 63%,
+      rgba(231, 82, 255, 1) 75%,
+      rgba(244, 255, 140, 1) 90%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+  &__filas {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+  &__celula {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 0.25px solid rgb(59, 59, 59);
+  }
+}

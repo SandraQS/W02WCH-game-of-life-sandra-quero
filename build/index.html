@@ -4,18 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/build/styles.css" />
+    <link rel="shortcut icon" href="/media/favicon.svg" type="image/x-icon" />
+    <script defer src="index.js"></script>
     <title>Game of Live</title>
   </head>
   <body>
     <header class="cabecera">
-      <h1 class="cabecera__titular">Game of live</h1>
+      <h1 class="cabecera__titular" id="titulo">Game of live</h1>
     </header>
 
     <main class="contenedor-principal">
-      <div class="contenedor-principal__tablero"></div>
+      <div class="contenedor-principal__tablero" id="contenedor-tablero"></div>
       <nav class="contenedor-principal__nav">
-        <button class="contenedor-principal__empezar">Empezar</button>
-        <button class="contenedor-principal__resetear">Resetear</button>
+        <h2>Escoge tu tablero</h2>
+        <div>
+          <button class="contenedor-principal__boton" id="pequeño">
+            10x10
+          </button>
+          <button class="contenedor-principal__boton" id="medio">20x20</button>
+          <button class="contenedor-principal__boton" id="grande">30x30</button>
+        </div>
+        <button class="contenedor-principal__boton" id="empezar">
+          Empezar
+        </button>
+        <button class="contenedor-principal__boton" id="resetear">
+          Resetear
+        </button>
       </nav>
     </main>
 
