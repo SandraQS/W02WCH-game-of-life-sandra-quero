@@ -64,10 +64,11 @@ const crearTablero = (col, row) => {
       celulas.addEventListener("click", () => {
         if (firstCol[i][j] === 0) {
           firstCol[i][j] = 1;
-          celulas.style.backgroundColor = "transparent";
-        } else if (firstCol[i][j] === 1) {
+          return celulas.classList.add("vive");
+        }
+        if (firstCol[i][j] === 1) {
           firstCol[i][j] = 0;
-          celulas.style.backgroundColor = "black";
+          return celulas.classList.remove("vive");
         }
         console.table(firstCol);
       });

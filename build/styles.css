@@ -19,6 +19,10 @@ body {
   width: 100vw;
   height: auto;
 }
+.cabecera__titular {
+  color: white;
+}
+
 .contenedor-principal {
   width: 100vw;
   height: 90vh;
@@ -39,6 +43,9 @@ body {
   height: 20px;
   background-color: black;
   border: 0.25px solid #3b3b3b;
+}
+.contenedor-principal .vive {
+  background-color: transparent;
 }
 
 /*# sourceMappingURL=styles.css.map */
