@@ -1,6 +1,6 @@
 @import "extends";
 
-$color-textos: rgba(181, 140, 237, 1);
+$color-textos: rgba(244, 255, 140, 1);
 
 * {
   box-sizing: border-box;
@@ -17,8 +17,8 @@ body {
   height: auto;
   @extend %display-flex-center;
   &__titular {
-    font-size: 30px;
-    border-bottom: 1px solid $color-textos;
+    font-size: 40px;
+    border-bottom: 1px solid rgba(70, 222, 209, 1);
     padding: 5px;
     font-family: "Festive", cursive;
     color: $color-textos;
@@ -73,7 +73,7 @@ body {
   }
   &__boton {
     background-color: transparent;
-    border: 1px solid rgba(181, 140, 237, 1);
+    border: 1px solid rgba(70, 222, 209, 1);
     padding: 10px;
     font-size: 20px;
     color: $color-textos;

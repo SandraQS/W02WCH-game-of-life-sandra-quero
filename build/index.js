@@ -2,7 +2,7 @@ const botonEmpezar = document.getElementById("empezar");
 const botonResetear = document.getElementById("resetear");
 
 const columnas = 30;
-const filas = 65;
+const filas = 75;
 
 const contenedorTablero = document.querySelector(
   ".contenedor-principal__tablero"
