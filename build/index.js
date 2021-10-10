@@ -4,39 +4,76 @@ const tableroGrande = document.getElementById("grande");
 const botonEmpezar = document.getElementById("empezar");
 const botonResetear = document.getElementById("Resetear");
 
-function crearFilasDivs() {
-  const div = document.createElement("div");
-  div.className = "contenedor-principal__filas";
+// function crearFilasDivs() {
+//   const div = document.createElement("div");
+//   div.className = "contenedor-principal__filas";
 
-  document.getElementById("contenedor-tablero").appendChild(div);
-}
+//   document.getElementById("contenedor-tablero").appendChild(div);
+// }
+// function alClicar(celula) {
+//   debugger;
+//   console.log("hola");
+//   celula.style.backgroundImage = "none";
+// }
 
-function crearCelulas() {
-  const celula = document.createElement("div");
-  celula.className = "contenedor-principal__celula";
+// function crearCelulas() {
+//   const celula = document.createElement("div");
+//   celula.className = "contenedor-principal__celula";
 
-  const celulaIndividual = document.getElementsByClassName(
-    "contenedor-principal__filas"
-  );
-  for (let i = 0; i < celulaIndividual.length; i++) {
-    celulaIndividual[i].appendChild(celula);
-  }
-}
+//   const celulaIndividual = document.getElementsByClassName(
+//     "contenedor-principal__filas"
+//   );
+//   for (let i = 0; i < celulaIndividual.length; i++) {
+//     celulaIndividual[i].appendChild(celula);
+//   }
+//   celula.addEventListener("click", () => {
+//     celula.style.backgroundColor = "transparent";
+//   });
+// }
 
 let columnas;
 let filas;
 
+// const crearTablero = (col, row) => {
+//   const primeraTabla = new Array(col);
+//   for (let i = 0; i < primeraTabla.length; i++) {
+//     primeraTabla[i] = new Array(row);
+//     for (let j = 0; j < primeraTabla[i].length; j++) {
+//       primeraTabla[i][j] = 0;
+//       crearCelulas();
+//     }
+//     crearFilasDivs();
+//   }
+//   return console.table(primeraTabla);
+// };
+
 const crearTablero = (col, row) => {
-  const primeraTabla = new Array(col);
-  for (let i = 0; i < primeraTabla.length; i++) {
-    primeraTabla[i] = new Array(row);
-    for (let j = 0; j < primeraTabla[i].length; j++) {
-      primeraTabla[i][j] = 0;
-      crearCelulas();
+  const firstCol = new Array(col);
+  const tablero = document.querySelector(".contenedor-principal__tablero");
+  for (let i = 0; i < firstCol.length; i++) {
+    firstCol[i] = new Array(row);
+    let filasDivs = firstCol[i];
+    filasDivs = document.createElement("div");
+    filasDivs.className = "contenedor-principal__filas";
+    for (let j = 0; j < firstCol[i].length; j++) {
+      firstCol[i][j] = 0;
+      let celulas = firstCol[i][j];
+      celulas = document.createElement("div");
+      celulas.className = "contenedor-principal__celula";
+      celulas.addEventListener("click", () => {
+        if (firstCol[i][j] === 0) {
+          firstCol[i][j] = 1;
+          celulas.style.backgroundColor = "transparent";
+        } else if (firstCol[i][j] === 1) {
+          firstCol[i][j] = 0;
+          celulas.style.backgroundColor = "black";
+        }
+      });
+      filasDivs.appendChild(celulas);
     }
-    crearFilasDivs();
+    tablero.appendChild(filasDivs);
   }
-  return console.table(primeraTabla);
+  return firstCol;
 };
 
 function omitirBotonesTablero() {
@@ -136,11 +173,17 @@ const nuevoTablero = (tablero) => {
   return tableroNuero;
 };
 
-const tableroFinal = crearTablero(columnas, filas);
+botonEmpezar.addEventListener("click", () => {
+  setInterval(() => {
+    let tableroFinal = crearTablero(columnas, filas);
+    tableroFinal = nuevoTablero(tableroFinal);
+    console.table(tableroFinal);
+  }, 1000);
+});
 
-tableroFinal[1][2] = 1;
-tableroFinal[2][2] = 1;
-tableroFinal[3][2] = 1;
+// // tableroFinal[1][2] = 1;
+// // tableroFinal[2][2] = 1;
+// // tableroFinal[3][2] = 1;
 
 // setInterval(() => {
 //   tableroFinal = nuevoTablero(tableroFinal);
