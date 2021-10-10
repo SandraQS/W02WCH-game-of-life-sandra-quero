@@ -3,8 +3,16 @@
 // const tableroGrande = document.getElementById("grande");
 const botonEmpezar = document.getElementById("empezar");
 const botonResetear = document.getElementById("Resetear");
-let tamañoTablero;
 
+const columnas = 20;
+const filas = 20;
+
+const contenedorTablero = document.querySelector(
+  ".contenedor-principal__tablero"
+);
+const borrarTablero = () => {
+  contenedorTablero.innerHTML = "";
+};
 // function crearFilasDivs() {
 //   const div = document.createElement("div");
 //   div.className = "contenedor-principal__filas";
@@ -32,9 +40,6 @@ let tamañoTablero;
 //   });
 // }
 
-const columnas = 20;
-const filas = 20;
-
 // const crearTablero = (col, row) => {
 //   const primeraTabla = new Array(col);
 //   for (let i = 0; i < primeraTabla.length; i++) {
@@ -49,34 +54,38 @@ const filas = 20;
 // };
 
 const crearTablero = (col, row) => {
-  const firstCol = new Array(col);
+  const primeraTabla = new Array(col);
+  borrarTablero();
   const tablero = document.querySelector(".contenedor-principal__tablero");
-  for (let i = 0; i < firstCol.length; i++) {
-    firstCol[i] = new Array(row);
-    let filasDivs = firstCol[i];
+
+  for (let i = 0; i < primeraTabla.length; i++) {
+    primeraTabla[i] = new Array(row);
+    let filasDivs = primeraTabla[i];
     filasDivs = document.createElement("div");
     filasDivs.className = "contenedor-principal__filas";
-    for (let j = 0; j < firstCol[i].length; j++) {
-      firstCol[i][j] = 0;
-      let celulas = firstCol[i][j];
+    for (let j = 0; j < primeraTabla[i].length; j++) {
+      primeraTabla[i][j] = 0;
+      let celulas = primeraTabla[i][j];
       celulas = document.createElement("div");
       celulas.className = "contenedor-principal__celula";
-      celulas.addEventListener("click", () => {
-        if (firstCol[i][j] === 0) {
-          firstCol[i][j] = 1;
-          return celulas.classList.add("vive");
+      celulas.addEventListener("click", (elemento) => {
+        const clickCelda = elemento.target;
+        console.log(clickCelda.classList);
+        if (primeraTabla[i][j] === 0) {
+          primeraTabla[i][j] = 1;
+          celulas.classList.add("viva");
+          console.log(primeraTabla[i][j]);
+        } else {
+          primeraTabla[i][j] = 0;
+          celulas.classList.remove("viva");
         }
-        if (firstCol[i][j] === 1) {
-          firstCol[i][j] = 0;
-          return celulas.classList.remove("vive");
-        }
-        console.table(firstCol);
+        console.table(primeraTabla);
       });
       filasDivs.appendChild(celulas);
     }
     tablero.appendChild(filasDivs);
   }
-  return firstCol;
+  return primeraTabla;
 };
 
 // function omitirBotonesTablero() {
@@ -167,15 +176,19 @@ const nuevoTablero = (tablero) => {
 
       if (primerTablero[i][j] === 1 && vecinos < 2) {
         tableroNuero[i][j] = 0;
+        tableroNuero[i][j].classList.remove("viva");
       }
       if (primerTablero[i][j] === 1 && (vecinos === 2 || vecinos === 3)) {
         tableroNuero[i][j] = 1;
+        tableroNuero[i][j].classList.add("viva");
       }
       if (primerTablero[i][j] === 1 && vecinos > 3) {
         tableroNuero[i][j] = 0;
+        tableroNuero[i][j].classList.remove("viva");
       }
       if (primerTablero[i][j] === 0 && vecinos === 3) {
         tableroNuero[i][j] = 1;
+        tableroNuero[i][j].classList.add("viva");
       }
     }
   }
@@ -183,6 +196,12 @@ const nuevoTablero = (tablero) => {
 };
 
 let tableroFinal = crearTablero(columnas, filas);
+
+for (let i = 0; i < tableroFinal.length; i++) {
+  for (let j = 0; j < tableroFinal[i].length; j++) {
+    tableroFinal[i][j] = 0;
+  }
+}
 
 botonEmpezar.addEventListener("click", () => {
   setInterval(() => {
